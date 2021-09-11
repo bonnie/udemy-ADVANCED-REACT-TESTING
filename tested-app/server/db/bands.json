@@ -1,0 +1,142 @@
+[
+  {
+    "id": 74290,
+    "name": "Queen 13",
+    "description": "improvisational bluegrass with  ear-shattering kazoo solos",
+    "image": {
+      "fileName": "band2.jpg",
+      "authorName": "Kyle Wong",
+      "authorLink": "https://unsplash.com/@kylewongs"
+    }
+  },
+  {
+    "id": 67849,
+    "name": "Salty Pumpkin",
+    "description": "surprising hip-hop with a big bass player",
+    "image": {
+      "fileName": "band15.jpg",
+      "authorName": "Adina Voicu",
+      "authorLink": "https://pixabay.com/users/adinavoicu-485024/"
+    }
+  },
+  {
+    "id": 38038,
+    "name": "Avalanche of Cheese",
+    "description": "electric americana with a mellow edge",
+    "image": {
+      "fileName": "band18.jpg",
+      "authorName": "Michael Henry",
+      "authorLink": "https://unsplash.com/@michaelhenry"
+    }
+  },
+  {
+    "id": 30207,
+    "name": "Six Bears Running",
+    "description": "eclectic blues with a feline raccoon mascot",
+    "image": {
+      "fileName": "band1.jpg",
+      "authorName": "Caleb George",
+      "authorLink": "https://unsplash.com/@seemoris"
+    }
+  },
+  {
+    "id": 54745,
+    "name": "Gambit And The Dogs",
+    "description": "smooth blues with  inspiring dance numbers",
+    "image": {
+      "fileName": "band16.jpg",
+      "authorName": "Tim Marshall",
+      "authorLink": "https://unsplash.com/@timmarshall"
+    }
+  },
+  {
+    "id": 28159,
+    "name": "The Joyous Nun Riot",
+    "description": "brilliant hip-hop with  serious instrument choices",
+    "image": {
+      "fileName": "band11.jpg",
+      "authorName": "Saksham Gangwar",
+      "authorLink": "https://unsplash.com/@saksham"
+    }
+  },
+  {
+    "id": 80874,
+    "name": "Ugly Bison",
+    "description": "ambitious pop with an unpredictable musical saw",
+    "image": {
+      "fileName": "band8.jpg",
+      "authorName": "Anton Mislawsky",
+      "authorLink": "https://unsplash.com/@antonmislawsky"
+    }
+  },
+  {
+    "id": 16908,
+    "name": "Gus and Moxie",
+    "description": "deeply moving funk with  hilarious costumes",
+    "image": {
+      "fileName": "band13.jpg",
+      "authorName": "Chang Duong",
+      "authorLink": "https://unsplash.com/@iamchang"
+    }
+  },
+  {
+    "id": 29936,
+    "name": "Mirrors and Pearls",
+    "description": "classic americana with an adventurous mood",
+    "image": {
+      "fileName": "band7.jpg",
+      "authorName": "Dominik Vanyi",
+      "authorLink": "https://unsplash.com/@dominik_photography"
+    }
+  },
+  {
+    "id": 33534,
+    "name": "The Cabbage Collective",
+    "description": "sublime pop with a hard-driving vibe",
+    "image": {
+      "fileName": "band6.jpg",
+      "authorName": "Museums Victoria",
+      "authorLink": "https://unsplash.com/@museumsvictoria"
+    }
+  },
+  {
+    "id": 1963,
+    "name": "The Blue Face Society",
+    "description": "enthusiastic world music with  rollicking melodies",
+    "image": {
+      "fileName": "band4.jpg",
+      "authorName": "Filip Mishevski",
+      "authorLink": "https://unsplash.com/@filipthedesigner"
+    }
+  },
+  {
+    "id": 52942,
+    "name": "Revolving Puddle Jumpers",
+    "description": "masterful hip-hop with  moody love songs",
+    "image": {
+      "fileName": "band10.jpg",
+      "authorName": "Melissa Askew",
+      "authorLink": "https://unsplash.com/@melissaaskew"
+    }
+  },
+  {
+    "id": 98929,
+    "name": "Ocean of Ink",
+    "description": "fusion a capella with an edgy drummer",
+    "image": {
+      "fileName": "band9.jpg",
+      "authorName": "Chang Duong",
+      "authorLink": "https://unsplash.com/@iamchang"
+    }
+  },
+  {
+    "id": 95325,
+    "name": "Frodo And The Lettuces",
+    "description": "unbelievable blues with a blistering water glass orchestra",
+    "image": {
+      "fileName": "band3.jpg",
+      "authorName": "Anthony da Cruz",
+      "authorLink": "https://unsplash.com/@akhu"
+    }
+  }
+]

@@ -1,0 +1,76 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:testing-library/react",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["src"]
+      }
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "project": "tsconfig.json"
+  },
+  "plugins": [
+    "testing-library",
+    "jest-dom",
+    "jsx-a11y",
+    "@typescript-eslint",
+    "simple-import-sort",
+    "prettier",
+    "react-hooks"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+    "testing-library/await-async-query": "error",
+    "testing-library/no-await-sync-query": "error",
+    "testing-library/no-debug": "warn",
+    "jest-dom/prefer-checked": "error",
+    "jest-dom/prefer-enabled-disabled": "error",
+    "jest-dom/prefer-required": "error",
+    "jest-dom/prefer-to-have-attribute": "error",
+    "react/prop-types": ["off"],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "import/extensions": ["error", "never"],
+    "import/prefer-default-export": 0,
+    "import/no-anonymous-default-export": 0,
+    "import/no-unresolved": 2,
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "sort-imports": "off",
+    "import/order": "off",
+    "no-shadow": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/prefer-optional-chain": "warn",
+    "@typescript-eslint/no-inferrable-types": "warn",
+    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/no-array-index-key": "off",
+    "react/react-in-jsx-scope": "off",
+    "prettier/prettier": "error",
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-curly-newline": "off"
+  }
+}
