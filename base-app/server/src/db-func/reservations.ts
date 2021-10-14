@@ -43,7 +43,7 @@ export async function getReservationById(
     );
     return reservation;
   } catch (e) {
-    if (e.message === 'reservation not found') {
+    if (e instanceof Error && e.message === 'reservation not found') {
       return null;
     }
     throw e;

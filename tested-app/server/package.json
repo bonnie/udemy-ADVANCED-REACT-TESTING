@@ -1,5 +1,5 @@
 {
-  "name": "classy-restaurant-server",
+  "name": "popular-music-venueserver",
   "version": "1.0.0",
   "author": "Bonnie Schulkin",
   "license": "AGPL-3.0",
@@ -11,7 +11,6 @@
     "body-parser": "^1.18.2",
     "core-js": "^3.8.1",
     "cors": "^2.8.4",
-    "crypto": "^1.0.1",
     "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "errorhandler": "^1.5.1",

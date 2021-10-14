@@ -1,3 +1,4 @@
 {
-  "workbench.colorTheme": "Monokai"
+  "workbench.colorTheme": "Monokai",
+  "git.ignoreLimitWarning": true
 }

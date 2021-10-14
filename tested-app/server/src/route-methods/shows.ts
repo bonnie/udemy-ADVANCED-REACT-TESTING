@@ -16,6 +16,9 @@ export enum TicketAction {
   cancelPurchase = 'cancel purchase',
 }
 
+const getErrorMessage = (e: unknown) =>
+  e instanceof Error ? e.message : 'unknown error';
+
 export async function get(req: Request, res: Response): Promise<Response> {
   try {
     const shows = await getShows();
@@ -52,7 +55,8 @@ export async function hold(req: Request, res: Response): Promise<Response> {
     });
     return res.status(204).send();
   } catch (e) {
-    return res.status(500).json({ message: `could not hold: ${e.message}` });
+    const message = getErrorMessage(e);
+    return res.status(500).json({ message: `could not hold: ${message}` });
   }
 }
 
@@ -69,9 +73,8 @@ export async function purchase(req: Request, res: Response): Promise<Response> {
     });
     return res.status(204).send();
   } catch (e) {
-    return res
-      .status(500)
-      .json({ message: `could not purchase: ${e.message}` });
+    const message = getErrorMessage(e);
+    return res.status(500).json({ message: `could not purchase: ${message}` });
   }
 }
 
@@ -85,9 +88,10 @@ export async function release(req: Request, res: Response): Promise<Response> {
     await deleteReservation(holdIdNumber);
     return res.status(204).send();
   } catch (e) {
+    const message = getErrorMessage(e);
     return res
       .status(500)
-      .json({ message: `could not release hold: ${e.message}` });
+      .json({ message: `could not release hold: ${message}` });
   }
 }
 
@@ -104,14 +108,15 @@ export async function cancelPurchase(
     // don't generate error if purchase isn't in the db, since
     // it's possible we're cancelling an aborted purchase that never
     // made it into the system.
-    if (getReservationById(purchaseIdNumber)) {
+    if (await getReservationById(purchaseIdNumber)) {
       await deleteReservation(purchaseIdNumber);
     }
     return res.status(204).send();
   } catch (e) {
+    const message = getErrorMessage(e);
     return res
       .status(500)
-      .json({ message: `could not release hold: ${e.message}` });
+      .json({ message: `could not release hold: ${message}` });
   }
 }
 
