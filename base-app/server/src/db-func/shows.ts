@@ -1,15 +1,13 @@
-/* eslint-disable import/extensions */
 /* eslint-disable no-param-reassign */
-import { Show } from '../../../shared/types';
-import { ShowWithoutAvailableSeatCount } from '../../../shared/types.js';
-import { venueCapacity } from '../../db/constants.js';
+import { Show, ShowWithoutAvailableSeatCount } from '../../../shared/types';
+import { venueCapacity } from '../../db/constants';
 import {
   filenames,
   getItemById,
   getJSONfromFile,
   writeJSONToFile,
-} from './general.js';
-import { getAvailableSeatCountByShowId } from './reservations.js';
+} from './general';
+import { getAvailableSeatCountByShowId } from './reservations';
 
 export async function writeShows(
   newShowsArray: ShowWithoutAvailableSeatCount[],

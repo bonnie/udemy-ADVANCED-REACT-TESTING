@@ -5,8 +5,8 @@ import {
   addReservation,
   deleteReservation,
   getReservationById,
-} from '../db-func/reservations.js';
-import { getShowById, getShows } from '../db-func/shows.js';
+} from '../db-func/reservations';
+import { getShowById, getShows } from '../db-func/shows';
 
 // enums can't be imported with the ts-loader
 export enum TicketAction {

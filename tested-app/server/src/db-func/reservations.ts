@@ -1,14 +1,12 @@
-/* eslint-disable import/extensions */
-
 import { Reservation } from '../../../shared/types';
-import { venueCapacity } from '../../db/constants.js';
+import { venueCapacity } from '../../db/constants';
 import {
   deleteItem,
   filenames,
   getItemById,
   getJSONfromFile,
   writeJSONToFile,
-} from './general.js';
+} from './general';
 
 type availableSeatCountByShowId = Record<number, number>;
 

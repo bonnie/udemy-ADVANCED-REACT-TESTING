@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 
 import { User } from '../../../shared/types';
-import { AuthUser, createJWT, hashPassword, passwordIsValid } from '../auth.js';
+import { AuthUser, createJWT, hashPassword, passwordIsValid } from '../auth';
 import {
   addUser,
   deleteUser,
   getUserById,
   getUsers,
   updateUser,
-} from '../db-func/users.js';
+} from '../db-func/users';
 import { AuthRequest } from '../middlewares';
 
 function removePasswordandAddToken(user: AuthUser): User {

@@ -1,7 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
-/* eslint-disable import/extensions */
 /* eslint-disable no-plusplus */
 
 import dayjs from 'dayjs';
@@ -10,19 +9,19 @@ import {
   Band,
   Image,
   ShowWithoutAvailableSeatCount,
-} from '../../../../shared/types.js';
+} from '../../../../shared/types';
 import {
   adjectives,
   bandImages,
   bandNames,
   genres,
   nouns,
-} from '../../../db/bandData.js';
-import { venueCapacity } from '../../../db/constants.js';
-import { TicketAction } from '../../route-methods/shows.js';
-import { getBands, writeBands } from '../bands.js';
-import { addReservation } from '../reservations.js';
-import { getShows, writeShows } from '../shows.js';
+} from '../../../db/bandData';
+import { venueCapacity } from '../../../db/constants';
+import { TicketAction } from '../../route-methods/shows';
+import { getBands, writeBands } from '../bands';
+import { addReservation } from '../reservations';
+import { getShows, writeShows } from '../shows';
 
 function getUnique<ItemType>(
   items: Array<ItemType>,

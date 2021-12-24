@@ -13,9 +13,8 @@ export const showApi = createApi({
     getAllShows: builder.query<Array<Show>, null>({
       query: () => "",
       transformResponse: (data: { shows: Array<Show> }) => {
-        // TODO: restore filter
-        // const today = dayjs();
-        // return data.shows.filter((show) => dayjs(show.scheduledAt) >= today);
+        const today = dayjs();
+        return data.shows.filter((show) => dayjs(show.scheduledAt) >= today);
         return data.shows;
       },
     }),

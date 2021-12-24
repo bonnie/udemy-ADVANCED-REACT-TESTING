@@ -1,17 +1,15 @@
 /* eslint-disable import/no-unresolved */
 import cors from 'cors';
 import dotenv from 'dotenv';
-import esMain from 'es-main';
 import express, { json } from 'express';
 import jwt from 'express-jwt';
 
 import { User as UserType } from '../../shared/types';
-// add .js for ts-node; https://github.com/microsoft/TypeScript/issues/41887#issuecomment-741902030
-import { generateData } from './db-func/generateData/index.js';
-import { validateUser } from './middlewares/index.js';
-import bandRoutes from './route-methods/bands.js';
-import showRoutes from './route-methods/shows.js';
-import userRoutes from './route-methods/users.js';
+import { generateData } from './db-func/generateData/index';
+import { validateUser } from './middlewares/index';
+import bandRoutes from './route-methods/bands';
+import showRoutes from './route-methods/shows';
+import userRoutes from './route-methods/users';
 
 dotenv.config();
 if (!process.env.EXPRESS_SECRET) {
@@ -91,7 +89,7 @@ app.patch('/shows/:showId/cancelPurchase/:purchaseId', showRoutes.release);
 
 /* *********** END: routes ********* */
 
-const startUp = async () => {
+export const startUp = async (): Promise<void> => {
   // create shows relevant to current date
   await generateData();
 
@@ -100,9 +98,5 @@ const startUp = async () => {
     console.log('Concert venue server listening on port 3030!'),
   );
 };
-
-if (esMain(import.meta)) {
-  startUp();
-}
 
 export default app;

@@ -4,7 +4,7 @@ import {
   getItemById,
   getJSONfromFile,
   writeJSONToFile,
-} from './general.js';
+} from './general';
 
 export async function writeBands(newBandsArray: Band[]): Promise<void> {
   await writeJSONToFile(filenames.bands, newBandsArray);

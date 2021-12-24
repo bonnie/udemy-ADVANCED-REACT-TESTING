@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import { getBandById } from '../db-func/bands.js';
+import { getBandById } from '../db-func/bands';
 
 export async function getById(req: Request, res: Response): Promise<Response> {
   const { id } = req.params;

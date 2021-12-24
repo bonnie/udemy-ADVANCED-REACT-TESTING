@@ -9,7 +9,7 @@ import {
   getJSONfromFile,
   updateItem,
   writeJSONToFile,
-} from './general.js';
+} from './general';
 
 export function getUsers(): Promise<AuthUser[]> {
   return getJSONfromFile<AuthUser>(filenames.users);
