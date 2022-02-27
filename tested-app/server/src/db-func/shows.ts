@@ -16,9 +16,8 @@ export async function writeShows(
 }
 
 export async function getShows(): Promise<Show[]> {
-  const showsMinusAvailableSeatCount = await getJSONfromFile<ShowWithoutAvailableSeatCount>(
-    filenames.shows,
-  );
+  const showsMinusAvailableSeatCount =
+    await getJSONfromFile<ShowWithoutAvailableSeatCount>(filenames.shows);
   const availableSeatCountByShowId = await getAvailableSeatCountByShowId();
 
   const fullDataShows = showsMinusAvailableSeatCount.map((show) => {
