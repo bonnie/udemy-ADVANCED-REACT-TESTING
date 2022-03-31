@@ -3,7 +3,9 @@ import { fireEvent, render, screen } from "../../../test-utils";
 import { NavBar } from "./NavBar";
 
 test("Clicking sign-in button pushes '/signin' to history", () => {
-  const { history } = render(<NavBar />, { preloadedState: { user: null } });
+  const { history } = render(<NavBar />, {
+    preloadedState: { user: undefined },
+  });
 
   const signInButton = screen.getByRole("button", { name: /sign in/i });
   fireEvent.click(signInButton);
@@ -12,7 +14,7 @@ test("Clicking sign-in button pushes '/signin' to history", () => {
 });
 
 test("Clicking sign-in button shows sign-in page", () => {
-  render(<App />, { preloadedState: { user: null } }); // note: rendering App
+  render(<App />, { preloadedState: { user: undefined } }); // note: rendering App
 
   const signInButton = screen.getByRole("button", { name: /sign in/i });
   fireEvent.click(signInButton);
@@ -23,13 +25,14 @@ test("Clicking sign-in button shows sign-in page", () => {
 });
 
 test("display Sign In button and no user email when user is null", () => {
-  render(<NavBar />, { preloadedState: { user: null } });
+  render(<NavBar />, { preloadedState: { user: undefined } });
 
   expect(screen.getByRole("button", { name: /sign in/i })).toBeInTheDocument();
 });
 
 test("display Sign Out button and user email when user is not null", () => {
   const userDetails = {
+    id: 1,
     email: "test@test.com",
   };
   render(<NavBar />, { preloadedState: { user: { userDetails } } });

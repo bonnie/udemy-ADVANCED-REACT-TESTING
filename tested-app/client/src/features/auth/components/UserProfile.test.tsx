@@ -3,6 +3,7 @@ import { render, screen } from "../../../test-utils";
 import { UserProfile } from "./UserProfile";
 
 const fakeUser = {
+  id: 1,
   name: "Tess Q. User",
   email: "test@test.com",
 };
@@ -16,7 +17,7 @@ test("User profile shows name and email", () => {
 
 test("User profile redirects to signin if not logged in", () => {
   const { history } = render(<UserProfile />, {
-    preloadedState: { user: null },
+    preloadedState: { user: undefined },
   });
   expect(screen.queryByText(/test@test.com/)).not.toBeInTheDocument();
   expect(history.location.pathname).toBe("/signin");
@@ -24,7 +25,7 @@ test("User profile redirects to signin if not logged in", () => {
 
 test("FUNCTIONAL: User profile redirects to signin if not logged in", () => {
   render(<App />, {
-    preloadedState: { user: null },
+    preloadedState: { user: undefined },
     routeHistory: ["/profile"],
   });
   expect(screen.queryByText(/test@test.com/)).not.toBeInTheDocument();

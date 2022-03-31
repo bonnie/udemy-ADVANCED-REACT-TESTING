@@ -28,7 +28,12 @@ export function Confirm(): React.ReactElement {
   const history = useHistory();
   const dispatch = useAppDispatch();
   const { user } = useUser();
-  const userId = user.id;
+
+  // use -1 to indicate undefined userId; this will allow
+  // Reservations to be created without typescript issues
+  // if userId is undefined, the page will redirect, so the -1
+  // will never actually be used
+  const userId = user?.id ?? -1;
   const transactionStatus = useAppSelector(
     (state) => state.tickets.transactionStatus
   );
@@ -47,7 +52,7 @@ export function Confirm(): React.ReactElement {
 
   // start the reservation on mount if required data is present
   React.useEffect(() => {
-    if (!seatCount || !holdId) {
+    if (!seatCount || !holdId || userId === -1) {
       dispatch(showToast({ title: "error holding seats", status: "error" }));
       history.push(`/tickets/${showId}`);
     } else {

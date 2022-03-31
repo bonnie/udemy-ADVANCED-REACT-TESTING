@@ -1,9 +1,4 @@
-import {
-  Action,
-  configureStore,
-  EnhancedStore,
-  ThunkAction,
-} from "@reduxjs/toolkit";
+import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
 import loggedInUserReducer from "../../features/auth/redux/authSlice";
@@ -13,9 +8,12 @@ import ticketReducer from "../../features/tickets/redux/ticketSlice";
 import toastReducer from "../../features/toast/redux/toastSlice";
 import { rootSaga } from "./sagas";
 
-export const configureStoreWithMiddlewares = (
-  initialState = {}
-): EnhancedStore => {
+// Remove explicit EnhancedStore state, which inadvertently makes return type generic
+// instead, let type be inferred by not including explicit return state
+// for more details see Q&A thread
+// https://www.udemy.com/course/advanced-react-testing/learn/#questions/17211434/
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const configureStoreWithMiddlewares = (initialState = {}) => {
   const sagaMiddleware = createSagaMiddleware();
 
   const store = configureStore({

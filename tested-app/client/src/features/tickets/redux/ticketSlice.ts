@@ -51,7 +51,8 @@ const ticketSlice = createTicketSlice({
 });
 
 export const selectors = {
-  getTicketAction: (state: RootState): TicketAction => state.tickets.action,
+  getTicketAction: (state: RootState): TicketAction | null =>
+    state.tickets.action,
 };
 
 export const {

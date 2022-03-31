@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
+import { DeepPartial } from "@reduxjs/toolkit";
 import {
   render as rtlRender,
   RenderOptions,
@@ -17,7 +18,10 @@ import { Router } from "react-router-dom";
 import { configureStoreWithMiddlewares, RootState } from "../app/store";
 
 type CustomRenderOptions = {
-  preloadedState?: RootState;
+  // use DeepPartial<RootState> to allow empty object
+  // for more details see Q&A thread
+  // https://www.udemy.com/course/advanced-react-testing/learn/#questions/17211434/
+  preloadedState?: DeepPartial<RootState>;
   routeHistory?: Array<string>;
   initialRouteIndex?: number; // index in the routeHistory array to start the test
   renderOptions?: Omit<RenderOptions, "wrapper">;

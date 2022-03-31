@@ -48,7 +48,10 @@ export const signInRequest = createAction<SignInDetails>("signInRequest");
 export const cancelSignIn = createAction("cancelSignIn");
 
 export const selectors = {
-  getUserDetails: (state: RootState): User => state.user.userDetails,
+  // since user is optional in AuthState, need to specify "undefined"
+  // as a possible type
+  getUserDetails: (state: RootState): User | undefined =>
+    state.user.userDetails,
 };
 
 const initialState = getInitialState();

@@ -3,7 +3,9 @@ import { fireEvent, render, screen } from "../../../test-utils";
 
 test("tickets page displays band data for showId", async () => {
   render(<App />, {
-    preloadedState: { user: { userDetails: { email: "test@test.com" } } },
+    preloadedState: {
+      user: { userDetails: { id: 1, email: "test@test.com" } },
+    },
     routeHistory: ["/tickets/0"],
   });
   const heading = await screen.findByRole("heading", {
@@ -19,7 +21,9 @@ test("'ticket' button click pushes correct URL", async () => {
   const { history } = render(<App />, {
     // the non-sold-out show has id 0
     routeHistory: ["/tickets/0"],
-    preloadedState: { user: { userDetails: { email: "test@test.com" } } },
+    preloadedState: {
+      user: { userDetails: { id: 1, email: "test@test.com" } },
+    },
   });
 
   const purchaseButton = await screen.findByRole("button", {
