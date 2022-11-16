@@ -159,7 +159,7 @@ test.each([
     endpoint: endpoints.signUp,
     outcome: "error",
     responseResolver: serverError,
-    buttonNameRegex: /sign in/i,
+    buttonNameRegex: /sign up/i,
   },
 ])(
   "$endpoint $outcome followed by successful signin",
