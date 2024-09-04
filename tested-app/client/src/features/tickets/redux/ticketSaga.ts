@@ -13,7 +13,7 @@ import {
 } from "redux-saga/effects";
 
 import { Reservation } from "../../../../../shared/types";
-import { showToast } from "../../toast/redux/toastSlice";
+import { startToast } from "../../toast/redux/toastSlice";
 import { ToastOptions } from "../../toast/types";
 import {
   cancelPurchaseServerCall,
@@ -49,7 +49,7 @@ export function generateErrorToastOptions(
 // cancel or abort after hold but before purchase has been initiated
 function* releaseTickets(payload: ReleasePayload): SagaIterator {
   const { reservation, reason } = payload;
-  yield put(showToast({ title: reason, status: "warning" }));
+  yield put(startToast({ title: reason, status: "warning" }));
   yield call(cancelTransaction, reservation);
 }
 
@@ -84,15 +84,15 @@ export function* purchaseTickets(
         purchaseResult,
         ticketAction
       );
-      yield put(showToast(errorToastOptions));
+      yield put(startToast(errorToastOptions));
       yield call(cancelTransaction, holdReservation);
     } else {
-      yield put(showToast({ title: "tickets purchased", status: "success" }));
+      yield put(startToast({ title: "tickets purchased", status: "success" }));
     }
   } finally {
     if (yield cancelled()) {
       yield call(cancelPurchaseServerCall, purchaseReservation);
-      yield put(showToast({ title: "purchase canceled", status: "warning" }));
+      yield put(startToast({ title: "purchase canceled", status: "warning" }));
       yield call(cancelTransaction, holdReservation);
     } else {
       yield call(releaseServerCall, holdReservation);
@@ -122,7 +122,7 @@ export function* ticketFlow({
     const ticketAction = yield select(selectors.getTicketAction);
     // TODO: revert back to non-call
     // yield put(
-    //   showToast(generateErrorToastOptions(error.toString(), ticketAction))
+    //   startToast(generateErrorToastOptions(error.toString(), ticketAction))
     // );
 
     const errorToastOptions = yield call(
@@ -130,7 +130,7 @@ export function* ticketFlow({
       error.toString(),
       ticketAction
     );
-    yield put(showToast(errorToastOptions));
+    yield put(startToast(errorToastOptions));
     // END: TODO
     yield call(cancelTransaction, holdPayload);
   }

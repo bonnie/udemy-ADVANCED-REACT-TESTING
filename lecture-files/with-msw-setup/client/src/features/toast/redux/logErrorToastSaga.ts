@@ -3,7 +3,7 @@ import { SagaIterator } from "redux-saga";
 import { call, put, takeEvery } from "redux-saga/effects";
 
 import { ToastOptions } from "../types";
-import { showToast, startToast } from "./toastSlice";
+import { startToast, startToast } from "./toastSlice";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const sendToAnalytics = (title: string): void => {
@@ -17,7 +17,7 @@ export function* logErrorToast({
   if (status === "error") {
     yield call(sendToAnalytics, title);
   }
-  yield put(showToast({ title, status }));
+  yield put(startToast({ title, status }));
 }
 
 export function* watchToasts(): SagaIterator {

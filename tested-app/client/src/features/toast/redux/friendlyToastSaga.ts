@@ -3,14 +3,14 @@ import { SagaIterator } from "redux-saga";
 import { put, takeEvery } from "redux-saga/effects";
 
 import { ToastOptions } from "../types";
-import { showFriendlyToast, showToast } from "./toastSlice";
+import { showFriendlyToast, startToast } from "./toastSlice";
 
 export function* makeFriendlyToast({
   payload,
 }: PayloadAction<ToastOptions>): SagaIterator {
   const { title, status } = payload;
   const friendlyTitle = `Hi! ${title}`;
-  yield put(showToast({ title: friendlyTitle, status }));
+  yield put(startToast({ title: friendlyTitle, status }));
 }
 
 // not very useful, didn't even bother to add to root saga

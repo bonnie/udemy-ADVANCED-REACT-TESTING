@@ -12,7 +12,7 @@ const createToastSlice = (initialState: ToastState) =>
     name: "toast",
     initialState,
     reducers: {
-      showToast(state, action: PayloadAction<ToastOptions>) {
+      startToast(state, action: PayloadAction<ToastOptions>) {
         state.toastOptions = action.payload;
       },
       resetToast(state) {
@@ -24,5 +24,5 @@ const createToastSlice = (initialState: ToastState) =>
 export const startToast = createAction<ToastOptions>("startToast");
 
 const toastSlice = createToastSlice({ toastOptions: null });
-export const { showToast, resetToast } = toastSlice.actions;
+export const { startToast, resetToast } = toastSlice.actions;
 export default toastSlice.reducer;

@@ -5,7 +5,7 @@ import * as matchers from "redux-saga-test-plan/matchers";
 import { throwError } from "redux-saga-test-plan/providers";
 
 import { Reservation, TicketAction } from "../../../../../shared/types";
-import { showToast } from "../../toast/redux/toastSlice";
+import { startToast } from "../../toast/redux/toastSlice";
 import { ToastOptions } from "../../toast/types";
 import {
   cancelPurchaseServerCall,
@@ -70,7 +70,7 @@ describe("ticketFlow ", () => {
         [matchers.call.fn(generateErrorToastOptions), errorToastOptions],
         [select(selectors.getTicketAction), TicketAction.release],
       ])
-      .put(showToast(errorToastOptions))
+      .put(startToast(errorToastOptions))
       .run();
   });
   describe("upon purchase confirmation", () => {
@@ -105,12 +105,12 @@ describe("ticketFlow ", () => {
         .call.fn(releaseServerCall)
         .call.fn(cancelPurchaseServerCall)
         .not.put(
-          showToast({
+          startToast({
             title: "tickets purchased",
             status: "success",
           })
         )
-        .put(showToast({ title: "purchase canceled", status: "warning" }))
+        .put(startToast({ title: "purchase canceled", status: "warning" }))
         .put(resetTransaction())
         .run();
     });
@@ -126,12 +126,12 @@ describe("ticketFlow ", () => {
         .not.call.fn(cancelSource.cancel)
         .not.call.fn(cancelPurchaseServerCall)
         .put(
-          showToast({
+          startToast({
             title: "tickets purchased",
             status: "success",
           })
         )
-        .not.put(showToast({ title: "purchase canceled", status: "warning" }))
+        .not.put(startToast({ title: "purchase canceled", status: "warning" }))
         .put(endTransaction())
         .run();
     });
@@ -154,7 +154,7 @@ describe("ticketFlow ", () => {
           )
           .call.fn(releaseServerCall)
           .not.call.fn(cancelPurchaseServerCall)
-          .put(showToast({ title: "test", status: "warning" }))
+          .put(startToast({ title: "test", status: "warning" }))
           .put(resetTransaction())
           .run();
       }

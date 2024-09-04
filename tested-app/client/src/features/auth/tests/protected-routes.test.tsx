@@ -13,6 +13,7 @@ import { App } from "../../../App";
 import { baseUrl, endpoints } from "../../../app/axios/constants";
 import { server } from "../../../mocks/server";
 import { getByRole, render, screen, waitFor } from "../../../test-utils";
+import { handlers } from "../../../mocks/handlers";
 
 test.each([
   { route: "/profile" },
@@ -166,7 +167,7 @@ test.each([
   async ({ endpoint, responseResolver, buttonNameRegex }) => {
     // reset the handler to respond as though signin failed
     const errorHandler = rest.post(`${baseUrl}/${endpoint}`, responseResolver);
-    server.resetHandlers(errorHandler);
+    server.resetHandlers(errorHandler, ...handlers);
 
     const { history } = render(<App />, { routeHistory: ["/tickets/0"] });
 

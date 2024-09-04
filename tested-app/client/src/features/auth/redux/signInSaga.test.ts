@@ -3,7 +3,7 @@ import { expectSaga, testSaga } from "redux-saga-test-plan";
 import * as matchers from "redux-saga-test-plan/matchers";
 import { throwError } from "redux-saga-test-plan/providers";
 
-import { showToast } from "../../toast/redux/toastSlice";
+import { startToast } from "../../toast/redux/toastSlice";
 import { authServerCall } from "../api";
 import { LoggedInUser, SignInDetails } from "../types";
 import {
@@ -45,7 +45,7 @@ describe("signInFlow saga", () => {
       .call(authServerCall, signInPayload)
       .put.actionType(startSignIn.type)
       .put.actionType(signIn.type)
-      .put.actionType(showToast.type)
+      .put.actionType(startToast.type)
       .put(endSignIn())
       .silentRun(25);
   });
@@ -56,7 +56,7 @@ describe("signInFlow saga", () => {
       .call(authServerCall, signUpPayload)
       .put.actionType(startSignIn.type)
       .put.actionType(signIn.type)
-      .put.actionType(showToast.type)
+      .put.actionType(startToast.type)
       .put(endSignIn())
       .silentRun(25);
   });
@@ -72,7 +72,7 @@ describe("signInFlow saga", () => {
       })
       .dispatch(signInRequest(signInPayload))
       .dispatch(cancelSignIn())
-      .put(showToast({ title: "Sign in canceled", status: "warning" }))
+      .put(startToast({ title: "Sign in canceled", status: "warning" }))
       .put(signOut())
       .put(endSignIn())
       .silentRun(25);
@@ -84,7 +84,7 @@ describe("signInFlow saga", () => {
       ])
       .dispatch(signInRequest(signInPayload))
       .put(
-        showToast({
+        startToast({
           title: "Sign in failed: uh oh",
           status: "warning",
         })

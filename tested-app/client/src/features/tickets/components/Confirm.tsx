@@ -9,7 +9,7 @@ import { useWillUnmount } from "../../../app/hooks/useWillUnmount";
 import { useAppDispatch, useAppSelector } from "../../../app/store/hooks";
 import { generateRandomId } from "../../../app/utils";
 import { useUser } from "../../auth/hooks/useUser";
-import { showToast } from "../../toast/redux/toastSlice";
+import { startToast } from "../../toast/redux/toastSlice";
 import {
   holdTickets,
   resetTransaction,
@@ -48,7 +48,7 @@ export function Confirm(): React.ReactElement {
   // start the reservation on mount if required data is present
   React.useEffect(() => {
     if (!seatCount || !holdId) {
-      dispatch(showToast({ title: "error holding seats", status: "error" }));
+      dispatch(startToast({ title: "error holding seats", status: "error" }));
       history.push(`/tickets/${showId}`);
     } else {
       dispatch(holdTickets(holdReservation));

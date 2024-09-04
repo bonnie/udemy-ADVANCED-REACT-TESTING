@@ -13,7 +13,7 @@ import {
 } from "redux-saga/effects";
 
 import { HoldReservation } from "../../../../../shared/types";
-import { showToast } from "../../toast/redux/toastSlice";
+import { startToast } from "../../toast/redux/toastSlice";
 import { ToastOptions } from "../../toast/types";
 import {
   cancelPurchaseServerCall,
@@ -49,7 +49,7 @@ export function generateErrorToastOptions(
 // cancel or abort after hold but before purchase has been initiated
 function* releaseTickets(payload: ReleasePayload): SagaIterator {
   const { reservation, reason } = payload;
-  yield put(showToast({ title: reason, status: "warning" }));
+  yield put(startToast({ title: reason, status: "warning" }));
   yield call(cancelTransaction, reservation);
 }
 
@@ -86,10 +86,10 @@ export function* purchaseTickets(
         purchaseResult,
         ticketAction
       );
-      yield put(showToast(errorToastOptions));
+      yield put(startToast(errorToastOptions));
       yield call(cancelTransaction, holdReservation);
     } else {
-      yield put(showToast({ title: "tickets purchased", status: "success" }));
+      yield put(startToast({ title: "tickets purchased", status: "success" }));
     }
   } catch (e) {
     yield call(cancelPurchaseServerCall, purchaseReservation);
@@ -97,7 +97,7 @@ export function* purchaseTickets(
   } finally {
     if (yield cancelled()) {
       yield call(cancelPurchaseServerCall, purchaseReservation);
-      yield put(showToast({ title: "purchase canceled", status: "warning" }));
+      yield put(startToast({ title: "purchase canceled", status: "warning" }));
       yield call(cancelTransaction, holdReservation);
     } else {
       yield call(releaseServerCall, holdReservation);
@@ -126,7 +126,7 @@ export function* ticketFlow({
   } catch (error) {
     const ticketAction = yield select(selectors.getTicketAction);
     yield put(
-      showToast(generateErrorToastOptions(error.message, ticketAction))
+      startToast(generateErrorToastOptions(error.message, ticketAction))
     );
 
     yield call(cancelTransaction, holdPayload);

@@ -2,7 +2,7 @@
 import { SagaIterator } from "redux-saga";
 import { call, cancel, cancelled, fork, put, take } from "redux-saga/effects";
 
-import { showToast } from "../../toast/redux/toastSlice";
+import { startToast } from "../../toast/redux/toastSlice";
 import { authServerCall } from "../api";
 import { LoggedInUser, SignInDetails } from "../types";
 import {
@@ -20,7 +20,7 @@ export function* authenticateUser(payload: SignInDetails): SagaIterator {
     const response: LoggedInUser = yield call(authServerCall, payload);
     yield put(signIn(response));
     yield put(
-      showToast({
+      startToast({
         title: `Signed in as ${response.email}`,
         status: "info",
       })
@@ -28,14 +28,14 @@ export function* authenticateUser(payload: SignInDetails): SagaIterator {
   } catch (error) {
     const action = payload.action === "signIn" ? "in" : "up";
     yield put(
-      showToast({
+      startToast({
         title: `Sign ${action} failed: ${error.message}`,
         status: "warning",
       })
     );
   } finally {
     if (yield cancelled()) {
-      yield put(showToast({ title: "Sign in canceled", status: "warning" }));
+      yield put(startToast({ title: "Sign in canceled", status: "warning" }));
       yield put(signOut());
     }
     yield put(endSignIn());
